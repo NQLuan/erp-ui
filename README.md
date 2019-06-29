@@ -30,5 +30,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Install environments
 npm install sass-loader --save-dev
+
 npm install -g vue-generate-component
 
