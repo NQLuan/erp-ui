@@ -1,0 +1,8 @@
+@import '~/assets/scss/define.scss';
+
+.test {
+    color: red;
+    border: 1px solid blue;
+    width: 500px;
+    @include border-radius(15px);
+}
