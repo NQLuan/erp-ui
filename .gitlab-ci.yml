@@ -1,3 +1,24 @@
 # Author: Sang Nguyen
 # Date: Apr 1 2020
 # Description: add gitlab-ci configuration file
+
+build site:
+  image: node:6
+  stage: build
+  script:
+    - npm install --progress=false
+    - npm install sass-loader --save-dev
+    - npm install --save-dev  --unsafe-perm node-sass
+    - npm install --save nuxt
+    
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - dist
+
+unit test:
+  image: node:6
+  stage: test
+  script:
+    - npm install --progress=false
+    - npm run unit
