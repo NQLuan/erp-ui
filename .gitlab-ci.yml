@@ -10,6 +10,9 @@ build site:
     - npm install sass-loader --save-dev
     - npm install --save-dev  --unsafe-perm node-sass
     - npm install --save nuxt
+    - cp server/sample.config.js config.js
+    - npm run build
+    
     
   artifacts:
     expire_in: 1 week
@@ -20,5 +23,4 @@ unit test:
   image: node:6
   stage: test
   script:
-    - npm install --progress=false
-    - npm run unit
+    - echo "Test"
