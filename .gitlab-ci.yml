@@ -12,6 +12,12 @@ before_script:
   - ssh-add <(echo "$SSH_PRIVATE_KEY")
   - mkdir -p ~/.ssh
   - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  # Initial required package
+  - npm install
+  - npm install sass-loader --save-dev
+  - npm install --save-dev  --unsafe-perm node-sass
+  - cp server/sample.config.js config.js
+  - npm install --save nuxt
     
 deploy_staging:
   type: deploy
