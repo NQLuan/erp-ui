@@ -19,6 +19,6 @@ deploy_staging:
     name: staging
     url: 35.209.247.237
   script:
-    - ssh desktop-win-sang@35.209.247.237 "cd ~/workspace/ui && git checkout master && git pull origin master && exit"
+    - ssh desktop-win-sang@35.209.247.237 "cd ~/workspace/company-ui && git checkout master && git pull origin master && exit"
   only:
     - master
