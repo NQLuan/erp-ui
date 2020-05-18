@@ -2,25 +2,23 @@
 # Date: Apr 1 2020
 # Description: add gitlab-ci configuration file
 
-build site:
-  image: node:6
-  stage: build
-  script:
-    - npm install --progress=false
-    - npm install sass-loader --save-dev
-    - npm install --save-dev  --unsafe-perm node-sass
-    - npm install --save nuxt
-    - cp server/sample.config.js config.js
-    - npm run build
-    
-    
-  artifacts:
-    expire_in: 1 week
-    paths:
-      - dist
 
-unit test:
-  image: node:6
-  stage: test
+before_script:
+  - apt-get update -qq
+  - apt-get install -qq git
+  # Setup SSH deploy keys
+  - 'which ssh-agent || ( apt-get install -qq openssh-client )'
+  - eval $(ssh-agent -s)
+  - ssh-add <(echo "$SSH_PRIVATE_KEY")
+  - mkdir -p ~/.ssh
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    
+deploy_staging:
+  type: deploy
+  environment:
+    name: staging
+    url: 35.209.247.237
   script:
-    - echo "Test"
+    - ssh desktop-win-sang@35.209.247.237 "cd ~/workspace/ui && git checkout master && git pull origin master && exit"
+  only:
+    - master
