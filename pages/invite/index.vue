@@ -23,7 +23,7 @@
                     <label for="inputEmail3" class="col-sm-3 col-form-label">Company Email<sup class="text-danger"> *</sup></label>
                     <div class="col-sm-9 pt-2 inner-addon right-addon row">
                         <input id="id_input_email" class="form-control" type="text" v-model="invite.email" placeholder="Company Mail"/>
-                        <i class="glyphicon mr-3 text-muted bg-grey"><p class="font-weight-bold">@para.ai</p></i>
+                        <i class="glyphicon mr-3 text-muted bg-grey"><p class="font-weight-bold">@paradox.ai</p></i>
                     </div>
                 </div>
                 <br />
