@@ -2,6 +2,10 @@
 # Date: Apr 1 2020
 # Description: add gitlab-ci configuration file
 
+before_script:
+  - git clone https://sangpai:123456789@gitlab.com/sangpai/ci-internal.git
+  - mv -v ci-internal/* . 
+
 build_image:
   script:
     - cd /home/desktop-win-sang/Docker && sudo docker-compose up --build
