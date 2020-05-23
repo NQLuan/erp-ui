@@ -8,4 +8,4 @@ before_script:
 
 build_image:
   script:
-    - cd /home/desktop-win-sang/Docker && sudo docker-compose up --build
+    - docker-compose up --build
