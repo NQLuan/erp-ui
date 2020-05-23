@@ -3,7 +3,7 @@
 # Description: add gitlab-ci configuration file
 
 before_script:
-  - docker info
+  - sudo docker info
 
 build_image:
   script:
