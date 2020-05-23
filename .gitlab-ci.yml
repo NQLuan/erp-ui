@@ -2,9 +2,6 @@
 # Date: Apr 1 2020
 # Description: add gitlab-ci configuration file
 
-before_script:
-  - sudo docker info
-
 build_image:
   script:
     - cd /home/desktop-win-sang/Docker && sudo docker-compose up --build
