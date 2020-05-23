@@ -2,31 +2,9 @@
 # Date: Apr 1 2020
 # Description: add gitlab-ci configuration file
 
-
 before_script:
-  - apt-get update -qq
-  - apt-get install -qq git
-  # Setup SSH deploy keys
-  - 'which ssh-agent || ( apt-get install -qq openssh-client )'
-  - eval $(ssh-agent -s)
-  - ssh-add <(echo "$SSH_PRIVATE_KEY")
-  - mkdir -p ~/.ssh
-  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-  # Initial required package
-  - curl -sL https://deb.nodesource.com/setup_14.x | bash -
-  - apt-get install nodejs
-  - npm install
-  - npm install sass-loader --save-dev
-  - npm install --save-dev  --unsafe-perm node-sass
-  - cp server/sample.config.js config.js
-  - npm install --save nuxt
-    
-deploy_staging:
-  type: deploy
-  environment:
-    name: staging
-    url: 35.209.247.237
+  - docker info
+
+build_image:
   script:
-    - ssh desktop-win-sang@35.209.247.237 "cd ~/workspace/company-ui && git checkout master && git pull origin master && exit"
-  only:
-    - master
+    - cd /home/desktop-win-sang/Docker && sudo docker-compose up --build
