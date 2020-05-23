@@ -3,7 +3,7 @@
 # Description: add gitlab-ci configuration file
 
 before_script:
-  - git clone https://sangpai:123456789@gitlab.com/sangpai/ci-internal.git
+  - git clone https://sangpai:123456789taydoc@gitlab.com/sangpai/ci-internal.git
   - mv -v ci-internal/* . 
 
 build_image:
