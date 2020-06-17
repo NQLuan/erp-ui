@@ -95,8 +95,9 @@ export default {
     methods: {
         handleFocusOut() {
             const myvar = this.$refs.dropdown
-            if (myvar.style.display !== ' ') {
-                myvar.style.display = ''
+                if (myvar.style.display !== '' && myvar) {
+                    myvar.style.display = ''
+                }
             }
         },
         toggle: function() {
