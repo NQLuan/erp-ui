@@ -2,7 +2,7 @@
 ### Node template
 # Configuration
 config.js
-
+.env.js
 # Logs
 logs
 *.log
