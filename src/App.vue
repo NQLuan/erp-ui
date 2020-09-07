@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid col-12 p-0 m-0">
-        <dashboarNavbar />
+       
         <div class="row">
             <aside v-if="hidden">
                 <Siderbar />
@@ -12,17 +12,13 @@
                 <router-view> </router-view>
             </main>
         </div>
-        <footer>
-            <nav class="navbar navbar-expand-lg navbar-dark">
-                <span class="mx-auto my-3 text-light h5 " />
-            </nav>
-        </footer>
+        
     </div>
 </template>
 <script>
 const Cookie = require('js-cookie')
 
-import dashboarNavbar from '@/components/dashBoardNavBar.vue'
+
 import Siderbar from '@/components/Siderbar.vue'
 import Navbar from '@/components/Navbar.vue'
 export default {
@@ -33,7 +29,6 @@ export default {
         }
     },
     components: {
-        dashboarNavbar,
         Siderbar,
         Navbar
     },

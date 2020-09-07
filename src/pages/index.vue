@@ -1,5 +1,6 @@
 <template>
     <div class="container col-12 p-0 m-0">
+         <dashboarNavbar/>
         <div class="container-fluid">
             <div class="row flex-xl-nowrap">
                 <main class="col-12 col-md-12 col-xl-12 bd-content">
@@ -47,12 +48,21 @@
                 </main>
             </div>
         </div>
+        <footer >
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <span class="mx-auto my-3 text-light h5 " />
+            </nav>
+        </footer>
     </div>
 </template>
 <script>
 const Cookie = require('js-cookie')
+import dashboarNavbar from '@/components/dashBoardNavBar.vue'
 export default {
     name: "Index",
+    components: {
+        dashboarNavbar
+    },
     head () {
         return {
         title: 'Homepage',

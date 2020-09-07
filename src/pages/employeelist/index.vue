@@ -242,6 +242,7 @@ export default {
         }
     },
     created: function () {
+        this.asyncData()
         this.sortFunction(this.rows);
     },
     checkedActiveComputed: function () {
@@ -275,22 +276,12 @@ export default {
             }
         }
     },
-    async asyncData({ $axios,query, error }) {
-        let data = await $axios.get(`user?page=${1}`,{params: {active: '1'}})
-        let search_data = await $axios.get('/user/get_non_paginate/')
-        return {
-            rows: data.data.results,
-            search_rows: search_data.data,
-            pagenumber: data.data.page_number,
-            pagecurrent: data.data.current
-        }
-    },
     methods: {
         async filtersUnactive () {
             this.filterUnactive = !this.filterUnactive
             let page = 1
             if (this.filterUnactive) {
-                await this.$axios
+                await axios
                     .get(`user?page=${page}`,{
                     params: {
                         active: '0'
@@ -303,7 +294,7 @@ export default {
                     })
                     .catch((e) => {})
             } else {
-                await this.$axios
+                await axios
                     .get(`user?page=${page}`,{
                     params: {
                         active: '1'
@@ -317,10 +308,18 @@ export default {
                     .catch((e) => {})
             }
         },
+        async asyncData() {
+            let data = await axios.get(`user?page=${1}`,{params: {active: '1'}})
+            let search_data = await axios.get('/user/get_non_paginate/')
+                this.rows = data.data.results,
+                this.search_rows= search_data.data,
+                this.pagenumber= data.data.page_number,
+                this.pagecurrent= data.data.current
+        },
         getData(page){
             localStorage.setItem('page', page)
             if (this.filterActive) {
-                this.$axios
+                axios
                 .get(`user?page=${page}`,{
                     params:{
                         active: '1'
@@ -332,7 +331,7 @@ export default {
                 })
                 .catch((e) => {})
             } else if (this.filterUnactive) {
-               this.$axios
+               axios
                     .get(`user?page=${page}`, {
                         params:{
                             active: '0'
@@ -344,7 +343,7 @@ export default {
                     })
                     .catch((e) => {})
             } else {
-                this.$axios
+                axios
                     .get(`user?page=${page}`)
                     .then((res) => {
                         this.$data.rows = res.data.results
@@ -420,10 +419,10 @@ export default {
             } else {
                 page = 1
             }
-            this.$axios
+            axios
                 .put(`user/${id}/activate/`, '')
                 .then((res) => {
-                    this.$axios
+                    axios
                         .get(`user?page=${page}`)
                         .then((res) => {
                             this.rows = res.data.results
@@ -439,11 +438,11 @@ export default {
             } else {
                 page = 1
             }
-            this.$axios
+            axios
                 .delete(`user/${this.currentid}`)
                 .then((res) => {
                     this.$refs.mymodal.hide()
-                    this.$axios
+                    axios
                         .get(`user?page=${page}`)
                         .then((res) => {
                             this.rows = res.data.results

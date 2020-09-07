@@ -37,7 +37,7 @@
                             <div class="dropdown_header mx-auto dropdown-toggle" @click="show_leave_dropdown()">
                                 <font-awesome-icon class="fa-fw" :icon="['fas', 'calendar']"/>
                                 <span>Leave Management</span>
-                                <span class="count ml-1" v-show="showNoti > 0 && admin==='true'">{{showNoti}} </span>
+                                <span class="count ml-1" v-show="showNoti > 0">{{showNoti}} </span>
                             </div>
                         </div>
                     </li>

@@ -27,7 +27,7 @@ export function initCurrentUserStateMiddleware(to, from, next) {
  */
 export function checkAccessMiddleware(to, from, next) {
   const isAuthRoute = Cookie.get('token')
-  if (to.name === 'Index') return next()
+  if (to.name === 'Index' || to.name === 'Verify') return next()
   if (to.name !== 'Login' && !isAuthRoute) return next({ name: 'Login' })
   return next();
 }
